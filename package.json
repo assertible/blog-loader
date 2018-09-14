@@ -1,0 +1,31 @@
+{
+  "name": "blog-loader",
+  "version": "0.0.1",
+  "description": "A webpack loader to render markdown files to HTML for a blog!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"TODO\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/assertible/blog-loader.git"
+  },
+  "keywords": [
+    "webpack",
+    "blog loader",
+    "markdown loader",
+    "webpack loader"
+  ],
+  "author": "Cody Reichert <codyreichert@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/assertible/blog-loader/issues"
+  },
+  "homepage": "https://github.com/assertible/blog-loader#readme",
+  "dependencies": {
+    "loader-utils": "1.1.0",
+    "marked": "0.3.9",
+    "marked-bootstrap-4-renderer": "assertible/marked-bootstrap-4-renderer",
+    "yaml-front-matter": "3.4.0"
+  }
+}
