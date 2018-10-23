@@ -21,6 +21,7 @@ var marked = require("marked")
 var loaderUtils = require("loader-utils")
 var jsYaml = require("yaml-front-matter")
 var mdRenderer = require("marked-bootstrap-4-renderer")
+var htmlparser = require("htmlparser")
 
 // default `marked` options
 var options = {
@@ -67,12 +68,14 @@ module.exports = function(content) {
      * Parse frontmatter and content from markdown file
      */
     var parsed = jsYaml.loadFront(content, "content")
+    var headings = markdownHeadingsRenderer(parsed.content)
 
     options.renderer = mdRenderer()
     marked.setOptions(options)
     var md = marked(parsed.content)
     delete parsed.content
 
+    finalValue.headings = headings
     finalValue.content = md
     finalValue.meta = parsed
     finalValue.id = path.basename(loc, ".md")
@@ -91,3 +94,30 @@ module.exports = function(content) {
 }
 
 module.exports.raw = true
+
+function markdownHeadingsRenderer(content) {
+    var headings = []
+    var parserHandler = new htmlparser.DefaultHandler(function(error) {
+        if (error) throw new Error('Cannot parse "' + text + '" in markdown file.')
+    })
+    var parseMarkdownHeadings = new marked.Renderer()
+
+    parseMarkdownHeadings.heading = function(text) {
+        var parser = new htmlparser.Parser(parserHandler)
+        parser.parseComplete(text)
+        var escaped = (parserHandler.dom[0].children && parserHandler.dom[0].children[0]
+            ? parserHandler.dom[0].children[0].raw
+            : parserHandler.dom[0].raw
+        ).trim()
+
+        headings.push(escaped)
+    }
+
+    var opts = Object.assign(options, {
+        renderer: parseMarkdownHeadings,
+    })
+
+    marked(content, opts)
+
+    return headings
+}
