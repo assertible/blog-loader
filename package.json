@@ -1,6 +1,6 @@
 {
   "name": "blog-loader",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A webpack loader to render markdown files to HTML for a blog!",
   "main": "index.js",
   "scripts": {
@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/assertible/blog-loader#readme",
   "dependencies": {
+    "htmlparser": "1.7.7",
     "loader-utils": "1.1.0",
     "marked": "0.3.9",
     "marked-bootstrap-4-renderer": "assertible/marked-bootstrap-4-renderer",
