@@ -1,6 +1,6 @@
 {
   "name": "blog-loader",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A webpack loader to render markdown files to HTML for a blog!",
   "main": "index.js",
   "scripts": {
@@ -25,8 +25,8 @@
   "dependencies": {
     "htmlparser": "1.7.7",
     "loader-utils": "1.1.0",
-    "marked": "0.3.9",
-    "marked-bootstrap-4-renderer": "assertible/marked-bootstrap-4-renderer",
+    "marked": "0.6.2",
+    "marked-bootstrap-4-renderer": "0.0.2",
     "yaml-front-matter": "3.4.0"
   }
 }
