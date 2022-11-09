@@ -24,7 +24,7 @@
   "homepage": "https://github.com/assertible/blog-loader#readme",
   "dependencies": {
     "htmlparser": "1.7.7",
-    "loader-utils": "1.1.0",
+    "loader-utils": "1.4.1",
     "marked": "0.7.0",
     "marked-bootstrap-4-renderer": "0.0.2",
     "yaml-front-matter": "3.4.0"
